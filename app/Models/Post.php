@@ -10,16 +10,16 @@ class Post extends Model
 {
     use HasFactory;
 
-        protected $fillable = [
+    protected $fillable = [
         'title',
         'body',
     ];
-    
+
     public function category()
     {
         return $this->belongsTo(\App\Models\Category::class);
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -31,8 +31,13 @@ class Post extends Model
         return $this->belongsTo(like::class);
     }
 
-        public function getImageUrlAttribute()
+    public function getImagePathAttribute()
     {
-        return Storage::url('images/posts/' . $this->image);
+        return 'images/posts/' . $this->image;
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return Storage::url($this->image_path);
     }
 }
