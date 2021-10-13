@@ -62,3 +62,30 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Sumeba ― Meal_App
+
+## About This App
+* 食事の投稿ができるアプリ
+
+## テーブル定義
+* Postテーブル･･･記事情報
+* Categoryテーブル･･･カテゴリー名
+* Likeテーブル･･･お気に入り情報
+* ユーザーテーブル･･･ユーザー情報
+https://docs.google.com/spreadsheets/d/1VdWp_Awm9f7zIwQgp0iTLUFBmT-SMRuStEf9KGyNZDE/edit?usp=sharing
+
+## 実装機能
+* CRUD機能
+* お気に入り・お気に入り削除ボタンを連打した際、2重登録問題
+* 投稿からの経過時間を表示
+
+## 工夫した点
+* 経過時間表示を1日~30日まで表示させたところ
+
+## 画面
+
+### 一覧画面
+<img width="1920" alt="スクリーンショット 2021-10-13 22 56 04（2）" src="https://user-images.githubusercontent.com/70826356/137152601-1b4b7ce4-f32b-4e9e-9514-9ea1776a2a15.png">
+
+### 詳細画面

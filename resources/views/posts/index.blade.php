@@ -9,11 +9,6 @@
                             {{ $post->title }}</h2>
                         <h3>{{ $post->user->name }}</h3>
                         {{-- 投稿からの経過時間 --}}
-                        @php
-                            $time = date('Y-m-d H:i:s');
-                            $createdTime = $post->created_at;
-                            $elapsedTime = (int) abs((strtotime($createdTime) - strtotime($time)) / (60 * 60 * 24)); //
-                        @endphp
                         <p class="text-sm mb-2 md:text-base font-normal text-gray-600">
                             <span class="text-red-400 font-bold">
                                 @if ($elapsedTime > 1 && $elapsedTime < 30)
