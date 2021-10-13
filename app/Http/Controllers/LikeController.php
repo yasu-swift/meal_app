@@ -9,25 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,43 +16,19 @@ class LikeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Post $post, Like $like, Request $request)
     {
-        //
-    }
+        $like = new Like();
+        $like->post_id = $post->id;
+        $like->ip = $request->ip();
+        if (Auth::check()) {
+            $like->user_id = Auth::user()->id;
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\like  $like
-     * @return \Illuminate\Http\Response
-     */
-    public function show(like $like, Post $post)
-    {
-        // 
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\like  $like
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(like $like)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\like  $like
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, like $like)
-    {
-        //
+        $like->save();
+        // 二重送信対策
+        $request->session()->regenerateToken();
+        return back();
     }
 
     /**
@@ -80,30 +37,13 @@ class LikeController extends Controller
      * @param  \App\Models\like  $like
      * @return \Illuminate\Http\Response
      */
-    public function destroy(like $like)
-    {
-        //
-    }
-
-    public function like(Post $post, Request $request)
-    {
-        $like = new Like();
-        $like->post_id = $post->id;
-        $like->ip = $request->ip();
-
-        if (Auth::check()) {
-            $like->user_id = Auth::user()->id;
-        }
-
-        $like->save();
-        return back();
-    }
-
-    public function unlike(Post $post, Request $request)
+    public function destroy(Post $post, Like $like, Request $request)
     {
         $user = $request->ip();
         $like = Like::where('post_id', $post->id)->where('ip', $user)->first();
         $like->delete();
+        // 二重送信対策
+        $request->session()->regenerateToken();
         return back();
     }
 }

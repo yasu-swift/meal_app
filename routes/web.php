@@ -28,9 +28,9 @@ Route::resource('posts', PostController::class)
 
 Route::resource('posts', PostController::class)
     ->only(['show', 'index']);
-
-// いいねボタン
-Route::get('/likes/likes/{post}', [LikeController::class, 'like'])->name('like');
-Route::get('/likes/unlikes/{post}', [LikeController::class, 'unlike'])->name('unlike');
+// いいねボタン通常版
+Route::resource('posts.likes', LikeController::class)
+    ->only(['store', 'destroy'])
+    ->middleware('auth');
 
 require __DIR__ . '/auth.php';

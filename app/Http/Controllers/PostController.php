@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Carbon;
 use App\Models\like;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -21,7 +20,6 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::with('user')->latest()->paginate(4);
-
         return view('posts.index', compact('posts'));
     }
 
@@ -80,10 +78,12 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        // $categories = Category::all();
-        $like = Like::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-
-        return view('posts.show', compact('post', 'like'));
+        if (Auth::check()) {
+            $like = Like::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
+            return view('posts.show', compact('post', 'like'));
+        } else {
+            return view('posts.show', compact('post'));
+        }
     }
 
     /**
