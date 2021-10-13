@@ -26,10 +26,6 @@ class CreatePostsTable extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            // $table->unsignedInteger('category_id')->nullable();
-            // $table->foreign('category_id')              // category_idに外部キーを設定する
-            //     ->references('id')->on('categories')    // categoriesテーブルのidカラムを外部キーにする
-            //     ->onDelete('restrict')->nullable();                 // 参照先の削除を禁止する
             $table->timestamps();
         });
     }

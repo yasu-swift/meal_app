@@ -9,6 +9,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Carbon;
+use App\Models\like;
 
 class PostController extends Controller
 {
@@ -80,8 +81,9 @@ class PostController extends Controller
     public function show(Post $post)
     {
         // $categories = Category::all();
+        $like = Like::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
 
-        return view('posts.show', compact('post'));
+        return view('posts.show', compact('post', 'like'));
     }
 
     /**

@@ -19,17 +19,18 @@ class Post extends Model
     {
         return $this->belongsTo(\App\Models\Category::class);
     }
-
+    
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
 
-    public function likes()
-    {
-        return $this->belongsTo(like::class);
-    }
 
     public function getImagePathAttribute()
     {
@@ -40,4 +41,5 @@ class Post extends Model
     {
         return Storage::url($this->image_path);
     }
+    
 }
