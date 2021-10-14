@@ -73,6 +73,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 * Categoryテーブル･･･カテゴリー名
 * Likeテーブル･･･お気に入り情報
 * ユーザーテーブル･･･ユーザー情報
+
 https://docs.google.com/spreadsheets/d/1VdWp_Awm9f7zIwQgp0iTLUFBmT-SMRuStEf9KGyNZDE/edit?usp=sharing
 
 ## 実装機能
@@ -86,21 +87,27 @@ https://docs.google.com/spreadsheets/d/1VdWp_Awm9f7zIwQgp0iTLUFBmT-SMRuStEf9KGyN
 ## 画面
 
 ### 一覧画面
+
 <img width="1920" alt="スクリーンショット 2021-10-13 22 56 04（2）" src="https://user-images.githubusercontent.com/70826356/137152601-1b4b7ce4-f32b-4e9e-9514-9ea1776a2a15.png">
 
 ### 詳細画面
 * 自分の記事
+
 <img width="1920" alt="スクリーンショット 2021-10-13 22 23 17（2）" src="https://user-images.githubusercontent.com/70826356/137156158-5f2ae7ba-2d1d-49a0-a017-3361bbf1e4af.png">
 
 * 他人の記事
+
 <img width="1920" alt="スクリーンショット 2021-10-13 22 22 31（2）" src="https://user-images.githubusercontent.com/70826356/137156176-60477f21-a44c-43d7-a786-13c1293a37aa.png">
 
 * ログインしていない
+
 <img width="1920" alt="スクリーンショット 2021-10-13 22 22 52（2）" src="https://user-images.githubusercontent.com/70826356/137156187-17765d75-c17a-40b1-9746-be742d64eb68.png">
 
 ### 新規作成画面
+
 <img width="1920" alt="スクリーンショット 2021-10-13 22 58 08" src="https://user-images.githubusercontent.com/70826356/137156373-e1c95db5-cd98-4ceb-925f-bc41a65a8f4a.png">
 
 ### 編集画面
+
 <img width="1920" alt="スクリーンショット 2021-10-13 22 58 46" src="https://user-images.githubusercontent.com/70826356/137156526-909bc1d9-3d55-4862-8d71-9bc40f22f0ac.png">
 
