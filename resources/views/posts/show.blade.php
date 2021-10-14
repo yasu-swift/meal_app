@@ -8,18 +8,14 @@
             <h3>{{ $post->user->name }}</h3>
             {{-- 投稿からの経過時間 --}}
             <p class="text-sm mb-2 md:text-base font-normal text-gray-600">
-                <span class="text-red-400 font-bold">
-                    @if ($elapsedTime > 1 && $elapsedTime < 30)
-                        {{ '投稿からの経過時間:' . $elapsedTime . '日後' }}
-                    @else
-                        {{ '投稿からの経過時間:' . $post->created_at->diffForHumans() }}
-                    @endif
-                </span>
+                <span class="text-red-400 font-bold"></span>
+                経過時間: {{ $post->getElapsedTime($post->created_at) }}
             </p>
             {{-- 記事作成日 --}}
             <p class="text-sm mb-2 md:text-base font-normal text-gray-600">
                 <span
-                    class="text-red-400 font-bold">{{ date('Y-m-d H:i:s', strtotime('-1 day')) < $post->created_at ? 'NEW' : '' }}</span>
+                    class="text-red-400 font-bold">{{ date('Y-m-d H:i:s', strtotime('-1 day')) < $post->created_at ? 'NEW' : '' }}
+                </span>
                 {{ '記事作成日:' . $post->created_at }}
             </p>
 

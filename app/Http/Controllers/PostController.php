@@ -17,13 +17,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Post $post)
+    public function index()
     {
-        $time = date('Y-m-d H:i:s');
-        $createdTime = $post->created_at;
-        $elapsedTime = (int) abs((strtotime($createdTime) - strtotime($time)) / (60 * 60 * 24)); //
         $posts = Post::with('user')->latest()->paginate(4);
-        return view('posts.index', compact('posts', 'elapsedTime'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -81,15 +78,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $time = date('Y-m-d H:i:s');
-        $createdTime = $post->created_at;
-        $elapsedTime = (int) abs((strtotime($createdTime) - strtotime($time)) / (60 * 60 * 24)); //
-
         if (Auth::check()) {
             $like = Like::where('post_id', $post->id)->where('user_id', auth()->user()->id)->first();
-            return view('posts.show', compact('post', 'like', 'elapsedTime'));
+            return view('posts.show', compact('post', 'like'));
         } else {
-            return view('posts.show', compact('post', 'elapsedTime'));
+            return view('posts.show', compact('post'));
         }
     }
 
